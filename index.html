@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>ГБПОУ НСО "Центр №2"</title>
+    <script src="https://web-static.max.ru/bridge/bridge.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Главный экран -->
+        <div id="main-screen" class="screen active">
+            <div class="header">
+                <h1>ГБПОУ НСО</h1>
+                <p class="subtitle">Новосибирский центр профессионального обучения № 2 им. Героя России Ю.М. Наумова</p>
+            </div>
+
+            <div class="menu">
+                <button class="menu-item" onclick="showScreen('about')">
+                    <span class="icon">ℹ️</span>
+                    <span class="text">О центре</span>
+                </button>
+                
+                <button class="menu-item" onclick="showScreen('contacts')">
+                    <span class="icon">📞</span>
+                    <span class="text">Контакты</span>
+                </button>
+                
+                <button class="menu-item" onclick="showScreen('documents')">
+                    <span class="icon">📄</span>
+                    <span class="text">Документы</span>
+                </button>
+                
+                <button class="menu-item" onclick="openWebsite()">
+                    <span class="icon">🌐</span>
+                    <span class="text">Полная версия сайта</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Экран "О центре" -->
+        <div id="about-screen" class="screen">
+            <div class="screen-header">
+                <button class="back-btn" onclick="showScreen('main')">← Назад</button>
+                <h2>О центре</h2>
+            </div>
+            <div class="content">
+                <div class="info-block">
+                    <h3>Полное наименование</h3>
+                    <p>Государственное бюджетное профессиональное образовательное учреждение Новосибирской области "Новосибирский центр профессионального обучения № 2 им. Героя России Ю.М. Наумова"</p>
+                </div>
+                
+                <div class="info-block">
+                    <h3>Краткое наименование</h3>
+                    <p>ГБПОУ НСО "Новосибирский центр профессионального обучения № 2 им. Героя России Ю.М. Наумова"</p>
+                </div>
+                
+                <div class="info-block">
+                    <h3>Дата создания</h3>
+                    <p>1947 год</p>
+                </div>
+                
+                <div class="info-block">
+                    <h3>Адрес</h3>
+                    <p>г. Новосибирск, ул. Первомайская, 206</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Экран "Контакты" -->
+        <div id="contacts-screen" class="screen">
+            <div class="screen-header">
+                <button class="back-btn" onclick="showScreen('main')">← Назад</button>
+                <h2>Контакты</h2>
+            </div>
+            <div class="content">
+                <div class="contact-card">
+                    <h3>Учредители</h3>
+                    
+                    <div class="contact-item">
+                        <h4>Правительство Новосибирской области</h4>
+                        <p><strong>Губернатор:</strong> Травников Андрей Александрович</p>
+                        <p><strong>Адрес:</strong> 630000, Красный Проспект, 18</p>
+                        <p><strong>Телефон:</strong> <a href="tel:+73832221162">+7 (383) 222-11-62</a></p>
+                        <p><strong>Сайт:</strong> <a href="https://www.nso.ru" target="_blank">www.nso.ru</a></p>
+                        <p><strong>График работы:</strong> пн.-чт. 9:00-18:00, пт. 9:00-17:00</p>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <h4>Министерство образования Новосибирской области</h4>
+                        <p><strong>Министр:</strong> Жафярова Мария Наильевна</p>
+                        <p><strong>Адрес:</strong> 630007, Красный проспект, 18</p>
+                        <p><strong>Телефон:</strong> <a href="tel:+73832235723">+7 (383) 223-57-23</a></p>
+                        <p><strong>Email:</strong> <a href="mailto:minobr@nso.ru">minobr@nso.ru</a></p>
+                        <p><strong>График работы:</strong> пн.-чт. 9:00-18:00, пт. 9:00-17:00</p>
+                        <p><strong>Прием граждан:</strong> пятница с 14:00</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Экран "Документы" -->
+        <div id="documents-screen" class="screen">
+            <div class="screen-header">
+                <button class="back-btn" onclick="showScreen('main')">← Назад</button>
+                <h2>Документы</h2>
+            </div>
+            <div class="content">
+                <div class="info-block">
+                    <p>Полная информация о документах доступна на официальном сайте центра.</p>
+                    <button class="primary-btn" onclick="openWebsite()">Перейти на сайт</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
