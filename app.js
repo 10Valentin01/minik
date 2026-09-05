@@ -1,6 +1,8 @@
 // Инициализация MAX Bridge
-window.WebApp.ready();
-window.WebApp.expand();
+if (window.WebApp) {
+    window.WebApp.ready();
+    window.WebApp.expand();
+}
 
 // Навигация между экранами
 function showScreen(screenId) {
@@ -12,30 +14,44 @@ function showScreen(screenId) {
         targetScreen.classList.add('active');
         window.scrollTo(0, 0);
     }
+    
+    updateBackButton();
 }
 
 // Открытие полной версии сайта
 function openWebsite() {
-    window.WebApp.openLink('https://centrprofnsk.ru');
+    const url = 'https://centrprofnsk.ru';
+    
+    if (window.WebApp && window.WebApp.openLink) {
+        window.WebApp.openLink(url);
+    } else if (window.WebApp && window.WebApp.openTelegramLink) {
+        window.WebApp.openTelegramLink(url);
+    } else {
+        window.open(url, '_blank');
+    }
 }
 
 // Обработка кнопки "Назад" от MAX
-window.WebApp.BackButton.onClick(() => {
-    const activeScreen = document.querySelector('.screen.active');
-    if (activeScreen && activeScreen.id !== 'main-screen') {
-        showScreen('main');
-    } else {
-        window.WebApp.close();
-    }
-});
+if (window.WebApp && window.WebApp.BackButton) {
+    window.WebApp.BackButton.onClick(() => {
+        const activeScreen = document.querySelector('.screen.active');
+        if (activeScreen && activeScreen.id !== 'main-screen') {
+            showScreen('main');
+        } else {
+            window.WebApp.close();
+        }
+    });
+}
 
 // Показываем кнопку "Назад" когда не на главном экране
 function updateBackButton() {
-    const activeScreen = document.querySelector('.screen.active');
-    if (activeScreen && activeScreen.id !== 'main-screen') {
-        window.WebApp.BackButton.show();
-    } else {
-        window.WebApp.BackButton.hide();
+    if (window.WebApp && window.WebApp.BackButton) {
+        const activeScreen = document.querySelector('.screen.active');
+        if (activeScreen && activeScreen.id !== 'main-screen') {
+            window.WebApp.BackButton.show();
+        } else {
+            window.WebApp.BackButton.hide();
+        }
     }
 }
 
@@ -45,4 +61,9 @@ observer.observe(document.getElementById('app'), {
     attributes: true,
     subtree: true,
     attributeFilter: ['class']
+});
+
+// Инициализация при загрузке
+document.addEventListener('DOMContentLoaded', () => {
+    updateBackButton();
 });
